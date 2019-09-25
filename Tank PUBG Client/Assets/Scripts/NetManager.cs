@@ -2,90 +2,115 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using System.IO;
+using System;
 
 public class NetManager : MonoBehaviour
 {
+	public MsgManager mMsgManager;
+
 	Client mClient;
+
 	LinkedList<byte[]> mSendMsgList = new LinkedList<byte[]>();
 	LinkedList<byte[]> mRecvMsgList = new LinkedList<byte[]>();
-
-	int mWaitTime = 100;
+	object mLockSend = new object();
+	object mLockRecv = new object();
 
 	void Awake()
     {
-		mClient = new Client();
+		LoadCmd();
 	}
 
-    void Update()
+	void Start()
+	{
+		mClient = new Client();
+
+		Thread recvMsgThread = new Thread(RecvMsgThread);
+		recvMsgThread.IsBackground = true;
+		recvMsgThread.Start();
+	}
+
+	void Update()
     {
 		SendMsg();
-		RecvMsg();
+		HandleMsg();
 	}
 
 	public void AddMsg(byte[] msg)
 	{
-		mSendMsgList.AddLast(msg);
+		lock (mLockSend)
+		{
+			mSendMsgList.AddLast(msg);
+		}
 	}
 
 	void SendMsg()
 	{
-		NetStream writer = new NetStream();
-		writer.WriteInt32(0);
-		writer.WriteInt32(mSendMsgList.Count);
-		mClient.Send(writer.GetBuffer());
-
-		foreach (byte[] ba in mSendMsgList)
+		lock (mLockSend)
 		{
-			mClient.Send(ba);
-		}
-
-		mSendMsgList.Clear();
-	}
-
-	void RecvMsg()
-	{
-		Thread recvMsgThread = new Thread(RecvMsgThread);
-		recvMsgThread.Start();
-
-		bool status = recvMsgThread.Join(mWaitTime);
-		recvMsgThread.Abort();
-
-		if (status)
-		{
-			Debug.Log(mRecvMsgList.Count);
-
-			foreach (byte[] ba in mRecvMsgList)
+			foreach (byte[] ba in mSendMsgList)
 			{
-				NetStream reader = new NetStream(ba);
-				int cmd = reader.ReadInt32();
-
-				if (cmd == 0)
-				{
-					int len = reader.ReadInt32();
-					Debug.Log(cmd.ToString() + " " + len.ToString());
-				}
-				else
-				{
-					float v = reader.ReadFloat();
-					float h = reader.ReadFloat();
-					Debug.Log(v.ToString() + " " + h.ToString());
-				}
+				mClient.Send(ba);
 			}
+			mSendMsgList.Clear();
 		}
-		else
-		{
-			Debug.Log("fail");
-		}
-
-		mRecvMsgList.Clear();
 	}
 
 	void RecvMsgThread()
 	{
-		byte[] msg = mClient.Receive();
-		mRecvMsgList.AddLast(msg);
+		while (true)
+		{
+			byte[] msg = mClient.Receive();
+			lock (mLockRecv)
+			{
+				mRecvMsgList.AddLast(msg);
+			}
+		}
+	}
 
-		msg = mClient.Receive();
-		mRecvMsgList.AddLast(msg);
+	void HandleMsg()
+	{
+		lock (mLockRecv)
+		{
+			foreach (byte[] msg in mRecvMsgList)
+			{
+				mMsgManager.Handle(msg);
+			}
+			mRecvMsgList.Clear();
+		}
+	}
+
+	void LoadCmd()
+	{
+		try
+		{
+			// 创建一个 StreamReader 的实例来读取文件 
+			// using 语句也能关闭 StreamReader
+			using (StreamReader sr = new StreamReader(Global.mPath + "cmd.txt"))
+			{
+				string line;
+
+				// 跳过第一行
+				line = sr.ReadLine();
+
+				int index = 0;
+
+				// 从文件读取行，直到文件的末尾 
+				while ((line = sr.ReadLine()) != null)
+				{
+					line = line.Trim();
+					if (line == "") continue;
+
+					string[] sub = line.Split();
+					Global.mCmd[sub[0]] = index++;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			// 显示出错消息
+			Debug.Log("The file could not be read:");
+			Debug.Log(e.Message);
+		}
 	}
 }

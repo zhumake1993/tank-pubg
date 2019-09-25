@@ -62,6 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Scripts\Global.cs" />
+    <Compile Include="Assets\Scripts\MsgManager.cs" />
     <Compile Include="Assets\Scripts\NetManager.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetStream.cs" />
     <Compile Include="Assets\Scripts\NetWork\Server.cs" />

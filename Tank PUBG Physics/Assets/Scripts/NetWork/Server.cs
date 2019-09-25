@@ -23,7 +23,6 @@ class Server
 	int mClientPort = 10080;
 	IPEndPoint mIPEndPointClient = null;
 	EndPoint mEndPointClient = null;
-	Socket mSocketClient = null;
 
 	public Server()
 	{

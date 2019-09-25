@@ -8,15 +8,32 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-		NetStream writer = new NetStream();
+		if (Input.GetKeyDown("z"))
+		{
+			NetStream writer = new NetStream();
+			writer.WriteInt32(Global.mCmd["CS_CONTROL_CONNECT"]);
+			mNetManager.AddMsg(writer.GetBuffer());
+		}
 
-		float v = Input.GetAxis("Vertical");
-		float h = Input.GetAxis("Horizontal");
+		if (Input.GetKeyDown("x"))
+		{
+			NetStream writer = new NetStream();
+			writer.WriteInt32(Global.mCmd["CS_GAME_START"]);
+			mNetManager.AddMsg(writer.GetBuffer());
+		}
 
-		writer.WriteInt32(1);
-		writer.WriteFloat(v);
-		writer.WriteFloat(h);
+		//if (Global.mGameStatus == 1)
+		//{
+		//	NetStream writer = new NetStream();
 
-		mNetManager.AddMsg(writer.GetBuffer());
+		//	float v = Input.GetAxis("Vertical");
+		//	float h = Input.GetAxis("Horizontal");
+
+		//	writer.WriteInt32(1);
+		//	writer.WriteFloat(v);
+		//	writer.WriteFloat(h);
+
+		//	mNetManager.AddMsg(writer.GetBuffer());
+		//}
 	}
 }

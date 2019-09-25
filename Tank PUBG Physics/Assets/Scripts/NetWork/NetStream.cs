@@ -11,7 +11,6 @@ class NetStream
 
 	public NetStream(byte[] buffer = null)
 	{
-		Debug.Log("ggggg");
 		if (buffer == null)
 		{
 			mStream = new MemoryStream();
