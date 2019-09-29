@@ -7,7 +7,7 @@ using System;
 
 public class NetManager : MonoBehaviour
 {
-	public MsgManager mMsgManager;
+	MsgManager mMsgManager;
 
 	Client mClient;
 
@@ -23,6 +23,8 @@ public class NetManager : MonoBehaviour
 
 	void Start()
 	{
+		mMsgManager = GameObject.FindWithTag("Manager").GetComponent<MsgManager>();
+
 		mClient = new Client();
 
 		Thread recvMsgThread = new Thread(RecvMsgThread);

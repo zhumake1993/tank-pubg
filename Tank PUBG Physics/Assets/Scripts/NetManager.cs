@@ -7,10 +7,9 @@ using System.IO;
 
 public class NetManager : MonoBehaviour
 {
-	public MsgManager mMsgManager;
+	MsgManager mMsgManager;
 
 	Server mServer;
-
 	LinkedList<byte[]> mSendMsgList = new LinkedList<byte[]>();
 	LinkedList<byte[]> mRecvMsgList = new LinkedList<byte[]>();
 	object mLockSend = new object();
@@ -23,6 +22,8 @@ public class NetManager : MonoBehaviour
 
 	void Start()
 	{
+		mMsgManager = GameObject.FindWithTag("Manager").GetComponent<MsgManager>();
+
 		mServer = new Server();
 
 		Thread recvMsgThread = new Thread(RecvMsgThread);

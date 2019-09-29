@@ -4,36 +4,45 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-	public NetManager mNetManager;
+	NetManager mNetManager;
+
+	void Start()
+	{
+		mNetManager = GameObject.FindWithTag("Manager").GetComponent<NetManager>();
+	}
 
     void Update()
     {
-		if (Input.GetKeyDown("z"))
+		if(Global.mGameStatus == 0)
 		{
-			NetStream writer = new NetStream();
-			writer.WriteInt32(Global.mCmd["CS_CONTROL_CONNECT"]);
-			mNetManager.AddMsg(writer.GetBuffer());
-		}
+			if (Input.GetKeyDown("z"))
+			{
+				NetStream writer = new NetStream();
+				writer.WriteInt32(Global.mCmd["CS_CONTROL_CONNECT"]);
+				mNetManager.AddMsg(writer.GetBuffer());
+			}
 
-		if (Input.GetKeyDown("x"))
+			if (Input.GetKeyDown("x"))
+			{
+				NetStream writer = new NetStream();
+				writer.WriteInt32(Global.mCmd["CS_GAME_START"]);
+				mNetManager.AddMsg(writer.GetBuffer());
+			}
+		}else if(Global.mGameStatus == 1)
 		{
-			NetStream writer = new NetStream();
-			writer.WriteInt32(Global.mCmd["CS_GAME_START"]);
-			mNetManager.AddMsg(writer.GetBuffer());
+			float v = Input.GetAxis("Vertical");
+			float h = Input.GetAxis("Horizontal");
+
+			if(v!=0 || h != 0)
+			{
+				NetStream writer = new NetStream();
+				writer.WriteInt32(Global.mCmd["CS_INPUT"]);
+				writer.WriteFloat(v);
+				writer.WriteFloat(h);
+				writer.WriteFloat(3.14f);
+				writer.WriteInt32(0);
+				mNetManager.AddMsg(writer.GetBuffer());
+			}
 		}
-
-		//if (Global.mGameStatus == 1)
-		//{
-		//	NetStream writer = new NetStream();
-
-		//	float v = Input.GetAxis("Vertical");
-		//	float h = Input.GetAxis("Horizontal");
-
-		//	writer.WriteInt32(1);
-		//	writer.WriteFloat(v);
-		//	writer.WriteFloat(h);
-
-		//	mNetManager.AddMsg(writer.GetBuffer());
-		//}
 	}
 }

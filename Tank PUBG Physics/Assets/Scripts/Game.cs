@@ -4,43 +4,55 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-	public NetManager mNetManager;
+	public GameObject mTank;
+	public Transform[] mTankSpawnPoints;
 
-	public GameObject mCube;
+	NetManager mNetManager;
 
+	ArrayList mClientIDs = new ArrayList();
 	Dictionary<int, GameObject> mGameObjects = new Dictionary<int, GameObject>();
+	Dictionary<int, GameObject> mPlayerGameObjects = new Dictionary<int, GameObject>();
+	int mCurrAvailableEntityId = 1;
 
 	void Start()
     {
-        
-    }
+		mNetManager = GameObject.FindWithTag("Manager").GetComponent<NetManager>();
+	}
 
     void Update()
     {
         
     }
 
+	public void AddNewClient(int clientID)
+	{
+		mClientIDs.Add(clientID);
+	}
+
 	public void StartGame()
 	{
-		GameObject cube = Instantiate(mCube, mCube.transform.position, mCube.transform.rotation) as GameObject;
-		mGameObjects[1] = cube;
+		for(int i=0;i< mClientIDs.Count; i++)
+		{
+			GameObject tank = Instantiate(mTank, mTankSpawnPoints[i].position, mTankSpawnPoints[i].rotation) as GameObject;
 
-		// id
-		// mGameObjects
+			int entityID = GetAvailableEntityID();
+			mGameObjects[entityID] = tank;
+			mPlayerGameObjects[(int)mClientIDs[i]] = tank;
 
+			Attribute attribute = tank.GetComponent<Attribute>();
+			attribute.SetEntityID(entityID);
+			attribute.SetClientID((int)mClientIDs[i]);
+			attribute.SetName("Tank");
+		}
+	}
 
+	int GetAvailableEntityID()
+	{
+		return mCurrAvailableEntityId++;
+	}
 
-		NetStream writer = new NetStream();
-		writer.WriteInt32(Global.mCmd["PS_INSTANTIATE"]);
-		writer.WriteInt32(1);
-		writer.WriteString("Cube");
-		writer.WriteFloat(mCube.transform.position.x);
-		writer.WriteFloat(mCube.transform.position.y);
-		writer.WriteFloat(mCube.transform.position.z);
-		writer.WriteFloat(mCube.transform.rotation.x);
-		writer.WriteFloat(mCube.transform.rotation.y);
-		writer.WriteFloat(mCube.transform.rotation.z);
-		writer.WriteFloat(mCube.transform.rotation.w);
-		mNetManager.AddMsg(writer.GetBuffer());
+	public void PlayerControl(int playerID, float v, float h, float a, bool j)
+	{
+		mPlayerGameObjects[playerID].GetComponent<Test>().Move(v, h);
 	}
 }

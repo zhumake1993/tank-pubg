@@ -69,7 +69,7 @@
     <Compile Include="Assets\Scripts\NetManager.cs" />
     <Compile Include="Assets\Scripts\NetWork\Client.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetStream.cs" />
-    <Compile Include="Assets\Scripts\Test.cs" />
+    <None Include="Assets\Fonts\Bowlby_One\FontLicense.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Tank PUBG/Tank PUBG Client/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
