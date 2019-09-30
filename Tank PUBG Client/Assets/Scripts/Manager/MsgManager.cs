@@ -14,7 +14,7 @@ public class MsgManager : MonoBehaviour
 		mGame = GameObject.FindWithTag("Game").GetComponent<Game>();
 
 		mMsgHandle[Global.mCmd["SC_CONTROL_CONNECT_SUCCESS"]] = Handle_SC_CONTROL_CONNECT_SUCCESS;
-		mMsgHandle[Global.mCmd["SC_GAME_START_SUCCESS"]] = Handle_SC_GAME_START_SUCCESS;
+		mMsgHandle[Global.mCmd["SC_GAME_START_SUCCESS"]] = Handle_SC_GAME_START;
 		mMsgHandle[Global.mCmd["SC_SYN_INSTANTIATE"]] = Handle_SC_SYN_INSTANTIATE;
 		mMsgHandle[Global.mCmd["SC_SYN_TRANSFORM"]] = Handle_SC_SYN_TRANSFORM;
 		mMsgHandle[Global.mCmd["SC_SYN_DESTROY"]] = Handle_SC_SYN_DESTROY;
@@ -34,7 +34,7 @@ public class MsgManager : MonoBehaviour
 		Global.mClientID = clientID;
 	}
 
-	void Handle_SC_GAME_START_SUCCESS(NetStream reader)
+	void Handle_SC_GAME_START(NetStream reader)
 	{
 		Global.mGameStatus = 1;
 	}

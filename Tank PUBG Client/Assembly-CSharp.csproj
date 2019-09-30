@@ -62,13 +62,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Game.cs" />
-    <Compile Include="Assets\Scripts\Global.cs" />
-    <Compile Include="Assets\Scripts\InputManager.cs" />
-    <Compile Include="Assets\Scripts\MsgManager.cs" />
-    <Compile Include="Assets\Scripts\NetManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\Game.cs" />
+    <Compile Include="Assets\Scripts\Manager\Global.cs" />
+    <Compile Include="Assets\Scripts\Manager\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\MsgManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\NetManager.cs" />
     <Compile Include="Assets\Scripts\NetWork\Client.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetStream.cs" />
+    <Compile Include="Assets\Scripts\TankHealth.cs" />
+    <Compile Include="Assets\Scripts\TankMovement.cs" />
     <None Include="Assets\Fonts\Bowlby_One\FontLicense.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Tank PUBG/Tank PUBG Client/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

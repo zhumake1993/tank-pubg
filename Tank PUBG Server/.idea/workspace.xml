@@ -2,12 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="983cd5e9-c7e5-4ae7-abbc-2cf160a8de44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scenes/Main/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scenes/Main/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank Asset/Assets/Prefabs/TankExplosion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank Asset/Assets/Prefabs/TankExplosion.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank Asset/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank Asset/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank Asset/Library/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank Asset/Library/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank Asset/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank Asset/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank Asset/Library/metadata/ee/ee49a9a8678ecf8468eb488e1ac8d42b" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank Asset/Library/metadata/ee/ee49a9a8678ecf8468eb488e1ac8d42b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank Asset/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank Asset/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank Asset/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank Asset/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/.vs/Tank PUBG Client/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/.vs/Tank PUBG Client/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/.vs/Tank PUBG Client/v16/Server/sqlite3/storage.ide" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/.vs/Tank PUBG Client/v16/Server/sqlite3/storage.ide" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Materials/TankGrey.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Materials/TankGrey.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Prefabs/TankMain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Prefabs/TankMain.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Prefabs/TankOther.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Prefabs/TankOther.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/Game.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/Game.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/Global.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/Global.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/InputManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/InputManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/MsgManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/MsgManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/NetManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Assets/Scripts/NetManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.Rider.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.Rider.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.Timeline.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.VSCode.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/Unity.VSCode.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEditor.TestRunner.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEditor.TestRunner.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEditor.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEditor.UI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ScriptAssemblies/UnityEngine.UI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/StateCache/Hierarchy/89cd9d-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/StateCache/Hierarchy/89cd9d-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/StateCache/SceneView/94ea5e-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/StateCache/SceneView/94ea5e-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/35/35e87100c6b2ef04cbc72f1b0727d4ef" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/35/35e87100c6b2ef04cbc72f1b0727d4ef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/a2/a27312bebf916e4498009c615c96ff56" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/a2/a27312bebf916e4498009c615c96ff56" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/a6/a669acfe292b5964590798770964c15d" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/a6/a669acfe292b5964590798770964c15d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/b3/b3b82af7bdc28674eb81e698afb7e6b6" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/b3/b3b82af7bdc28674eb81e698afb7e6b6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/b9/b979f96565a9d754498a26f307192424" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/b9/b979f96565a9d754498a26f307192424" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/b9/b979f96565a9d754498a26f307192424.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/b9/b979f96565a9d754498a26f307192424.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/bc/bc7d631f7b67d7d429e42247ae472e76" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/bc/bc7d631f7b67d7d429e42247ae472e76" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/ed/ed731841066f7ce459da9f8a3a8dc09e" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/ed/ed731841066f7ce459da9f8a3a8dc09e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/ed/ed731841066f7ce459da9f8a3a8dc09e.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/metadata/ed/ed731841066f7ce459da9f8a3a8dc09e.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/shadercompiler-UnityShaderCompiler.exe1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/Library/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/Library/shadercompiler-UnityShaderCompiler.exe2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Client/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Client/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Physics/.vs/Tank PUBG Physics/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Physics/.vs/Tank PUBG Physics/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Physics/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Physics/Library/CurrentLayout-default.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Tank PUBG Physics/Library/StateCache/Hierarchy/89cd9d-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Physics/Library/StateCache/Hierarchy/89cd9d-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tank PUBG Physics/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Physics/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tank PUBG Physics/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/../Tank PUBG Physics/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../n.unitypackage" beforeDir="false" afterPath="$PROJECT_DIR$/../n.unitypackage" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +74,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1RGNa88g8YSRXcNxMZewOH89mPM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
