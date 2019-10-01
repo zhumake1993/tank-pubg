@@ -12,7 +12,7 @@ using System.Web;
 class Client
 {
 	string mServerIP = "127.0.0.1";
-	int mServerPort = 10080;
+	int mServerPort = 10081;
 	IPEndPoint mIPEndPointServer = null;
 	EndPoint mEndPointServer = null;
 
@@ -31,7 +31,7 @@ class Client
 
 		// 创建客户端
 		mSocketClient = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-		mByteReceiveArray = new byte[512];
+		mByteReceiveArray = new byte[Global.mMaxRecvSize];
 
 		while (true)
 		{

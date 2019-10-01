@@ -6,7 +6,6 @@ public class MsgManager : MonoBehaviour
 	Game mGame;
 
 	delegate void MsgHandle(NetStream reader);
-
 	Dictionary<int, MsgHandle> mMsgHandle = new Dictionary<int, MsgHandle>();
 
 	void Start()
@@ -14,7 +13,7 @@ public class MsgManager : MonoBehaviour
 		mGame = GameObject.FindWithTag("Game").GetComponent<Game>();
 
 		mMsgHandle[Global.mCmd["SC_CONTROL_CONNECT_SUCCESS"]] = Handle_SC_CONTROL_CONNECT_SUCCESS;
-		mMsgHandle[Global.mCmd["SC_GAME_START_SUCCESS"]] = Handle_SC_GAME_START;
+		mMsgHandle[Global.mCmd["SC_GAME_START"]] = Handle_SC_GAME_START;
 		mMsgHandle[Global.mCmd["SC_SYN_INSTANTIATE"]] = Handle_SC_SYN_INSTANTIATE;
 		mMsgHandle[Global.mCmd["SC_SYN_TRANSFORM"]] = Handle_SC_SYN_TRANSFORM;
 		mMsgHandle[Global.mCmd["SC_SYN_DESTROY"]] = Handle_SC_SYN_DESTROY;
@@ -32,11 +31,13 @@ public class MsgManager : MonoBehaviour
 	{
 		int clientID = reader.ReadInt32();
 		Global.mClientID = clientID;
+		Debug.Log("clientID: " + clientID);
 	}
 
 	void Handle_SC_GAME_START(NetStream reader)
 	{
 		Global.mGameStatus = 1;
+		Debug.Log("game start!");
 	}
 
 	void Handle_SC_SYN_INSTANTIATE(NetStream reader)

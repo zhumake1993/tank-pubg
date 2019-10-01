@@ -10,6 +10,18 @@ using System.Threading.Tasks;
 using System.Web;
 using UnityEngine;
 
+public class Msg
+{
+	public byte[] mMsg;
+	public EndPoint mClient;
+
+	public Msg(byte[] msg=null, EndPoint client=null)
+	{
+		mMsg = msg;
+		mClient = client;
+	}
+}
+
 class Server
 {
 	string mServerIP = "127.0.0.1";
@@ -19,23 +31,14 @@ class Server
 	Socket mSocketServer = null;
 	byte[] mByteReceiveArray = null;
 
-	string mClientIP = "127.0.0.1";
-	int mClientPort = 10080;
-	IPEndPoint mIPEndPointClient = null;
-	EndPoint mEndPointClient = null;
-
 	public Server()
 	{
 		// 创建服务端
 		mIPEndPointServer = new IPEndPoint(IPAddress.Parse(mServerIP), mServerPort);
 		mEndPointServer = (EndPoint)mIPEndPointServer;
 		mSocketServer = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-		mByteReceiveArray = new byte[512];
+		mByteReceiveArray = new byte[Global.mMaxRecvSize];
 		mSocketServer.Bind(mEndPointServer);
-
-		// 创建客户端
-		mIPEndPointClient = new IPEndPoint(IPAddress.Parse(mClientIP), mClientPort);
-		mEndPointClient = (EndPoint)mIPEndPointClient;
 	}
 
 	~Server()
@@ -44,19 +47,35 @@ class Server
 		mSocketServer.Close();
 	}
 
-	public void Send(byte[] byteArray)
+	public void Send(Msg msg)
 	{
-		mSocketServer.SendTo(byteArray, mEndPointClient);
+		if(msg.mClient != null)
+		{
+			mSocketServer.SendTo(msg.mMsg, msg.mClient);
+		}
+		else
+		{
+			foreach (EndPoint client in Global.mClients.Keys)
+			{
+				mSocketServer.SendTo(msg.mMsg, client);
+			}
+		}
+
 	}
 
-	public byte[] Receive()
+	public Msg Receive()
 	{
-		int intReceiveLenght = mSocketServer.ReceiveFrom(mByteReceiveArray, ref mEndPointClient);
-		byte[] res = new byte[intReceiveLenght];
+		IPEndPoint IPEndPointClient = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 10800);
+		EndPoint endPointClient = (EndPoint)IPEndPointClient;
+
+		int intReceiveLenght = mSocketServer.ReceiveFrom(mByteReceiveArray, ref endPointClient);
+		byte[] data = new byte[intReceiveLenght];
 		for (int i = 0; i < intReceiveLenght; i++)
 		{
-			res[i] = mByteReceiveArray[i];
+			data[i] = mByteReceiveArray[i];
 		}
-		return res;
+
+		Msg msg = new Msg(data, endPointClient);
+		return msg;
 	}
 }

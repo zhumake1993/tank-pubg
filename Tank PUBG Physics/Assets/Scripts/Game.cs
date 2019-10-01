@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Net;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,10 @@ public class Game : MonoBehaviour
 
 	NetManager mNetManager;
 
-	ArrayList mClientIDs = new ArrayList();
 	Dictionary<int, GameObject> mGameObjects = new Dictionary<int, GameObject>();
 	Dictionary<int, GameObject> mPlayerGameObjects = new Dictionary<int, GameObject>();
-	int mCurrAvailableEntityId = 1;
+
+	int mCurrAvailableEntityId = 0;
 
 	void Start()
     {
@@ -24,25 +25,34 @@ public class Game : MonoBehaviour
         
     }
 
-	public void AddNewClient(int clientID)
+	public void AddNewClient(EndPoint client)
 	{
-		mClientIDs.Add(clientID);
+		int clientID = Global.GetNewClientID();
+		Global.mClients[client] = clientID;
+
+		NetStream writer = new NetStream();
+		writer.WriteInt32(Global.mCmd["SC_CONTROL_CONNECT_SUCCESS"]);
+		writer.WriteInt32(clientID);
+		mNetManager.AddMsg(new Msg(writer.GetBuffer(), client));
 	}
 
 	public void StartGame()
 	{
-		for(int i=0;i< mClientIDs.Count; i++)
+		NetStream writer = new NetStream();
+		writer.WriteInt32(Global.mCmd["SC_GAME_START"]);
+		mNetManager.AddMsg(new Msg(writer.GetBuffer()));
+
+		for (int i=0;i< Global.mClients.Count; i++)
 		{
 			GameObject tank = Instantiate(mTank, mTankSpawnPoints[i].position, mTankSpawnPoints[i].rotation) as GameObject;
 
-			int entityID = GetAvailableEntityID();
-			mGameObjects[entityID] = tank;
-			mPlayerGameObjects[(int)mClientIDs[i]] = tank;
-
 			Attribute attribute = tank.GetComponent<Attribute>();
-			attribute.SetEntityID(entityID);
-			attribute.SetClientID((int)mClientIDs[i]);
+			attribute.SetEntityID(GetAvailableEntityID());
+			attribute.SetClientID(i+1);
 			attribute.SetName("Tank");
+
+			mGameObjects[GetAvailableEntityID()] = tank;
+			mPlayerGameObjects[i+1] = tank;
 		}
 	}
 
@@ -51,8 +61,8 @@ public class Game : MonoBehaviour
 		return mCurrAvailableEntityId++;
 	}
 
-	public void PlayerControl(int playerID, float v, float h, float a, bool j)
+	public void PlayerControl(int clientID, float v, float h, float a, bool j)
 	{
-		mPlayerGameObjects[playerID].GetComponent<Test>().Move(v, h);
+		mPlayerGameObjects[clientID].GetComponent<Test>().Move(v, h);
 	}
 }

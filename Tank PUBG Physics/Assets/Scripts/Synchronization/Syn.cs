@@ -34,7 +34,7 @@ public class Syn : MonoBehaviour
 	void SynInstantiate()
 	{
 		NetStream writer = new NetStream();
-		writer.WriteInt32(Global.mCmd["PS_SYN_INSTANTIATE"]);
+		writer.WriteInt32(Global.mCmd["SC_SYN_INSTANTIATE"]);
 		writer.WriteInt32(mAttribute.GetEntityID());
 		writer.WriteInt32(mAttribute.GetClientID());
 		writer.WriteString(mAttribute.GetName());
@@ -45,7 +45,7 @@ public class Syn : MonoBehaviour
 		writer.WriteFloat(transform.rotation.y);
 		writer.WriteFloat(transform.rotation.z);
 		writer.WriteFloat(transform.rotation.w);
-		mNetManager.AddMsg(writer.GetBuffer());
+		mNetManager.AddMsg(new Msg(writer.GetBuffer()));
 	}
 
 	void SynTransform()
@@ -56,7 +56,7 @@ public class Syn : MonoBehaviour
 			mOldRotation = transform.rotation;
 
 			NetStream writer = new NetStream();
-			writer.WriteInt32(Global.mCmd["PS_SYN_TRANSFORM"]);
+			writer.WriteInt32(Global.mCmd["SC_SYN_TRANSFORM"]);
 			writer.WriteInt32(mAttribute.GetEntityID());
 			writer.WriteFloat(transform.position.x);
 			writer.WriteFloat(transform.position.y);
@@ -65,15 +65,15 @@ public class Syn : MonoBehaviour
 			writer.WriteFloat(transform.rotation.y);
 			writer.WriteFloat(transform.rotation.z);
 			writer.WriteFloat(transform.rotation.w);
-			mNetManager.AddMsg(writer.GetBuffer());
+			mNetManager.AddMsg(new Msg(writer.GetBuffer()));
 		}
 	}
 
 	void SynDestroy()
 	{
 		NetStream writer = new NetStream();
-		writer.WriteInt32(Global.mCmd["PS_SYN_DESTROY"]);
+		writer.WriteInt32(Global.mCmd["SC_SYN_DESTROY"]);
 		writer.WriteInt32(mAttribute.GetEntityID());
-		mNetManager.AddMsg(writer.GetBuffer());
+		mNetManager.AddMsg(new Msg(writer.GetBuffer()));
 	}
 }

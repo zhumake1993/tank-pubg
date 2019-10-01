@@ -1,59 +1,48 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class MsgManager : MonoBehaviour
 {
-	delegate void MsgHandle(NetStream reader);
-
 	Game mGame;
-	NetManager mNetManager;
 
+	delegate void MsgHandle(NetStream reader, EndPoint client);
 	Dictionary<int, MsgHandle> mMsgHandle = new Dictionary<int, MsgHandle>();
 
 	void Start()
 	{
-		mNetManager = GameObject.FindWithTag("Manager").GetComponent<NetManager>();
 		mGame = GameObject.FindWithTag("Game").GetComponent<Game>();
 
-		mMsgHandle[Global.mCmd["SP_CONTROL_CONNECT"]] = Handle_SP_CONTROL_CONNECT;
-		mMsgHandle[Global.mCmd["SP_CONTROL_NEW_CLIENT"]] = Handle_SP_CONTROL_NEW_CLIENT;
-		mMsgHandle[Global.mCmd["SP_GAME_START"]] = Handle_SP_GAME_START;
-		mMsgHandle[Global.mCmd["SP_INPUT"]] = Handle_SP_INPUT;
+		mMsgHandle[Global.mCmd["CS_CONTROL_CONNECT"]] = Handle_CS_CONTROL_CONNECT;
+		mMsgHandle[Global.mCmd["CS_GAME_START"]] = Handle_CS_GAME_START;
+		mMsgHandle[Global.mCmd["CS_INPUT"]] = Handle_CS_INPUT;
 	}
 
-	public void Handle(byte[] msg)
+	public void Handle(Msg msg)
 	{
-		NetStream reader = new NetStream(msg);
+		NetStream reader = new NetStream(msg.mMsg);
 		int cmd = reader.ReadInt32();
-		mMsgHandle[cmd](reader);
+		mMsgHandle[cmd](reader, msg.mClient);
 	}
 
-	void Handle_SP_CONTROL_CONNECT(NetStream reader)
+	void Handle_CS_CONTROL_CONNECT(NetStream reader, EndPoint client)
 	{
-		NetStream writer = new NetStream();
-		writer.WriteInt32(Global.mCmd["PS_CONTROL_CONNECT_SUCCESS"]);
-		mNetManager.AddMsg(writer.GetBuffer());
+		mGame.AddNewClient(client);
 	}
 
-	void Handle_SP_CONTROL_NEW_CLIENT(NetStream reader)
-	{
-		int clientID = reader.ReadInt32();
-		mGame.AddNewClient(clientID);
-	}
-
-	void Handle_SP_GAME_START(NetStream reader)
+	void Handle_CS_GAME_START(NetStream reader, EndPoint client)
 	{
 		mGame.StartGame();
 	}
 
-	void Handle_SP_INPUT(NetStream reader)
+	void Handle_CS_INPUT(NetStream reader, EndPoint client)
 	{
-		int playerID = reader.ReadInt32();
+		int clientID = Global.mClients[client];
 		float v = reader.ReadFloat();
 		float h = reader.ReadFloat();
 		float a = reader.ReadFloat();
 		bool j = reader.ReadInt32() != 0;
 
-		mGame.PlayerControl(playerID, v, h, a, j);
+		mGame.PlayerControl(clientID, v, h, a, j);
 	}
 }

@@ -10,8 +10,8 @@ public class NetManager : MonoBehaviour
 	MsgManager mMsgManager;
 
 	Server mServer;
-	LinkedList<byte[]> mSendMsgList = new LinkedList<byte[]>();
-	LinkedList<byte[]> mRecvMsgList = new LinkedList<byte[]>();
+	LinkedList<Msg> mSendMsgList = new LinkedList<Msg>();
+	LinkedList<Msg> mRecvMsgList = new LinkedList<Msg>();
 	object mLockSend = new object();
 	object mLockRecv = new object();
 
@@ -37,7 +37,7 @@ public class NetManager : MonoBehaviour
 		HandleMsg();
 	}
 
-	public void AddMsg(byte[] msg)
+	public void AddMsg(Msg msg)
 	{
 		lock (mLockSend)
 		{
@@ -49,9 +49,9 @@ public class NetManager : MonoBehaviour
 	{
 		lock (mLockSend)
 		{
-			foreach (byte[] ba in mSendMsgList)
+			foreach (Msg msg in mSendMsgList)
 			{
-				mServer.Send(ba);
+				mServer.Send(msg);
 			}
 			mSendMsgList.Clear();
 		}
@@ -61,7 +61,7 @@ public class NetManager : MonoBehaviour
 	{
 		while (true)
 		{
-			byte[] msg = mServer.Receive();
+			Msg msg = mServer.Receive();
 			lock (mLockRecv)
 			{
 				mRecvMsgList.AddLast(msg);
@@ -73,7 +73,7 @@ public class NetManager : MonoBehaviour
 	{
 		lock (mLockRecv)
 		{
-			foreach (byte[] msg in mRecvMsgList)
+			foreach (Msg msg in mRecvMsgList)
 			{
 				mMsgManager.Handle(msg);
 			}
