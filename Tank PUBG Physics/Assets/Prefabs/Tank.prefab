@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4022474171821290783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7960991955576813332}
+  m_Layer: 8
+  m_Name: FireTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7960991955576813332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022474171821290783}
+  m_LocalRotation: {x: 0.08715596, y: -0, z: -0, w: -0.9961947}
+  m_LocalPosition: {x: 0, y: 1.7, z: 1.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7674112570639055755}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 350, y: 0, z: 0}
 --- !u!1 &7674112570638952035
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,8 +236,10 @@ GameObject:
   - component: {fileID: 7998633899442115424}
   - component: {fileID: 7129195126909694324}
   - component: {fileID: 3364079220453067088}
-  - component: {fileID: 179582572779391233}
-  m_Layer: 0
+  - component: {fileID: -2188755801335683103}
+  - component: {fileID: -4166630745826420544}
+  - component: {fileID: 9213852250920059576}
+  m_Layer: 8
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,11 +253,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674112570638952043}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7674112570639055751}
+  - {fileID: 7960991955576813332}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -271,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mEntityID: 0
+  mClientID: -1
   mName: 
 --- !u!114 &3364079220453067088
 MonoBehaviour:
@@ -284,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2f0db7d26d7f146a0d2dc47693b106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &179582572779391233
+--- !u!114 &-2188755801335683103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,9 +327,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 7674112570638952043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798ce01a5290cdf4d8d932fa07a48067, type: 3}
+  m_Script: {fileID: 11500000, guid: 92cefdb0a53180549a7b0b0f72958d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpeed: 12
+  mTurnSpeed: 180
+--- !u!114 &-4166630745826420544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674112570638952043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30866fee6d3dbc641a6d5d19dbd52326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mStartingHealth: 1
+--- !u!114 &9213852250920059576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674112570638952043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468541ff1be1aea47bc8bc6e207ef87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShell: {fileID: 2847694722616725722, guid: a04b65a37d2c2bd4b9c893f2ddadf13b, type: 3}
+  mFireTransform: {fileID: 7960991955576813332}
+  mMinLaunchForce: 15
+  mMaxLaunchForce: 30
+  mMaxChargeTime: 0.75
 --- !u!1 &7674112570638952045
 GameObject:
   m_ObjectHideFlags: 0

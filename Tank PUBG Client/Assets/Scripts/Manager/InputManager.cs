@@ -32,17 +32,27 @@ public class InputManager : MonoBehaviour
 		{
 			float v = Input.GetAxis("Vertical");
 			float h = Input.GetAxis("Horizontal");
-
-			if(v!=0 || h != 0)
+			int j = 0;
+			if (Input.GetButtonDown("Jump"))
 			{
-				NetStream writer = new NetStream();
-				writer.WriteInt32(Global.mCmd["CS_INPUT"]);
-				writer.WriteFloat(v);
-				writer.WriteFloat(h);
-				writer.WriteFloat(3.14f);
-				writer.WriteInt32(0);
-				mNetManager.AddMsg(writer.GetBuffer());
+				j = 1;
 			}
+			else if (Input.GetButton("Jump"))
+			{
+				j = 2;
+			}
+			else if (Input.GetButtonUp("Jump"))
+			{
+				j = 3;
+			}
+
+			NetStream writer = new NetStream();
+			writer.WriteInt32(Global.mCmd["CS_INPUT"]);
+			writer.WriteFloat(v);
+			writer.WriteFloat(h);
+			writer.WriteFloat(3.14f);
+			writer.WriteInt32(j);
+			mNetManager.AddMsg(writer.GetBuffer());
 		}
 	}
 }

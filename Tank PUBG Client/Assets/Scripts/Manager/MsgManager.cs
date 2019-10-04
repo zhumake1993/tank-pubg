@@ -17,6 +17,11 @@ public class MsgManager : MonoBehaviour
 		mMsgHandle[Global.mCmd["SC_SYN_INSTANTIATE"]] = Handle_SC_SYN_INSTANTIATE;
 		mMsgHandle[Global.mCmd["SC_SYN_TRANSFORM"]] = Handle_SC_SYN_TRANSFORM;
 		mMsgHandle[Global.mCmd["SC_SYN_DESTROY"]] = Handle_SC_SYN_DESTROY;
+		mMsgHandle[Global.mCmd["SC_SYN_AUDIO_ENGINE"]] = Handle_SC_SYN_AUDIO_ENGINE;
+		mMsgHandle[Global.mCmd["SC_SYN_TANK_HEALTH"]] = Handle_SC_SYN_TANK_HEALTH;
+		mMsgHandle[Global.mCmd["SC_SYN_TANK_CHARGE"]] = Handle_SC_SYN_TANK_CHARGE;
+		mMsgHandle[Global.mCmd["SC_SYN_TANK_CHARGE_SLIDER"]] = Handle_SC_SYN_TANK_CHARGE_SLIDER;
+		mMsgHandle[Global.mCmd["SC_SYN_TANK_FIRE"]] = Handle_SC_SYN_TANK_FIRE;
 	}
 
 	public void Handle(byte[] msg)
@@ -75,5 +80,43 @@ public class MsgManager : MonoBehaviour
 		int entityID = reader.ReadInt32();
 
 		mGame.Destroy(entityID);
+	}
+
+	void Handle_SC_SYN_AUDIO_ENGINE(NetStream reader)
+	{
+		int entityID = reader.ReadInt32();
+		bool engineDriving = reader.ReadInt32() == 1;
+
+		mGame.PlayEngineAudio(entityID, engineDriving);
+	}
+
+	void Handle_SC_SYN_TANK_HEALTH(NetStream reader)
+	{
+		int entityID = reader.ReadInt32();
+		float health = reader.ReadFloat();
+
+		mGame.SetTankHealth(entityID, health);
+	}
+
+	void Handle_SC_SYN_TANK_CHARGE(NetStream reader)
+	{
+		int entityID = reader.ReadInt32();
+
+		mGame.PlayChargingAudio(entityID);
+	}
+
+	void Handle_SC_SYN_TANK_CHARGE_SLIDER(NetStream reader)
+	{
+		int entityID = reader.ReadInt32();
+		float val = reader.ReadFloat();
+
+		mGame.SetAimSlider(entityID, val);
+	}
+
+	void Handle_SC_SYN_TANK_FIRE(NetStream reader)
+	{
+		int entityID = reader.ReadInt32();
+
+		mGame.PlayFireAudio(entityID);
 	}
 }

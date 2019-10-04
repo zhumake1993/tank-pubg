@@ -69,8 +69,10 @@
     <Compile Include="Assets\Scripts\Manager\NetManager.cs" />
     <Compile Include="Assets\Scripts\NetWork\Client.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetStream.cs" />
+    <Compile Include="Assets\Scripts\ShellExplosion.cs" />
     <Compile Include="Assets\Scripts\TankHealth.cs" />
     <Compile Include="Assets\Scripts\TankMovement.cs" />
+    <Compile Include="Assets\Scripts\TankShooting.cs" />
     <None Include="Assets\Fonts\Bowlby_One\FontLicense.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Tank PUBG/Tank PUBG Client/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -92,6 +94,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>F:/Tank PUBG/Tank PUBG Client/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>F:/Tank PUBG/Tank PUBG Client/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>F:/Tank PUBG/Tank PUBG Client/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

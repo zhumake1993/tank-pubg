@@ -9,3 +9,8 @@ SC_GAME_START					()															开始游戏
 SC_SYN_INSTANTIATE				(int,int,string,float,float,float,float,float,float,float)	同步实例化
 SC_SYN_TRANSFORM				(int,float,float,float,float,float,float,float)				同步transform
 SC_SYN_DESTROY					(int)														同步销毁
+SC_SYN_AUDIO_ENGINE				(int,int)													同步引擎声效
+SC_SYN_TANK_HEALTH				(int,float)													同步坦克生命值
+SC_SYN_TANK_CHARGE				(int)														同步蓄力声效
+SC_SYN_TANK_CHARGE_SLIDER		(int,float)													同步蓄力值
+SC_SYN_TANK_FIRE				(int)														同步开火声效

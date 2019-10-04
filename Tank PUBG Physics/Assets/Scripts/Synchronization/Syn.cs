@@ -6,6 +6,7 @@ public class Syn : MonoBehaviour
 {
 	NetManager mNetManager;
 	Attribute mAttribute;
+	Game mGame;
 
 	Vector3 mOldPosition;
 	Quaternion mOldRotation;
@@ -14,6 +15,7 @@ public class Syn : MonoBehaviour
     {
 		mNetManager = GameObject.FindWithTag("Manager").GetComponent<NetManager>();
 		mAttribute = GetComponent<Attribute>();
+		mGame = GameObject.FindWithTag("Game").GetComponent<Game>();
 
 		mOldPosition = new Vector3(0.0f, 0.0f, 0.0f);
 		mOldRotation = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
@@ -75,5 +77,12 @@ public class Syn : MonoBehaviour
 		writer.WriteInt32(Global.mCmd["SC_SYN_DESTROY"]);
 		writer.WriteInt32(mAttribute.GetEntityID());
 		mNetManager.AddMsg(new Msg(writer.GetBuffer()));
+
+		mGame.mGameObjects.Remove(mAttribute.GetEntityID());
+		int clientID = mAttribute.GetClientID();
+		if(clientID != -1)
+		{
+			mGame.mPlayerGameObjects.Remove(clientID);
+		}
 	}
 }

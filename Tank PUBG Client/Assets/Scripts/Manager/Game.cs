@@ -6,6 +6,7 @@ public class Game : MonoBehaviour
 {
 	public GameObject mTankMain;
 	public GameObject mTankOther;
+	public GameObject mShell;
 
 	Dictionary<string, GameObject> mPrefabs = new Dictionary<string, GameObject>();
 	Dictionary<int, GameObject> mGameObjects = new Dictionary<int, GameObject>();
@@ -14,6 +15,7 @@ public class Game : MonoBehaviour
     {
 		mPrefabs["TankMain"] = mTankMain;
 		mPrefabs["TankOther"] = mTankOther;
+		mPrefabs["Shell"] = mShell;
 	}
 
     void Update()
@@ -51,7 +53,51 @@ public class Game : MonoBehaviour
 
 	public void Destroy(int entityID)
 	{
+		GameObject entity = mGameObjects[entityID];
+
+		ShellExplosion shellExplosion = entity.GetComponent<ShellExplosion>();
+		if (shellExplosion)
+		{
+			shellExplosion.PlayAudio();
+		}
+
+		TankHealth tankHealth = entity.GetComponent<TankHealth>();
+		if (tankHealth)
+		{
+			tankHealth.Destroy();
+		}
+
 		Destroy(mGameObjects[entityID]);
 		mGameObjects.Remove(entityID);
+	}
+
+	public void PlayEngineAudio(int entityID, bool engineDriving)
+	{
+		GameObject tank = mGameObjects[entityID];
+		tank.GetComponent<TankMovement>().PlayEngineAudio(engineDriving);
+	}
+
+	public void SetTankHealth(int entityID, float health)
+	{
+		GameObject tank = mGameObjects[entityID];
+		tank.GetComponent<TankHealth>().SetTankHealth(health);
+	}
+
+	public void PlayChargingAudio(int entityID)
+	{
+		GameObject tank = mGameObjects[entityID];
+		tank.GetComponent<TankShooting>().PlayChargingClip();
+	}
+
+	public void SetAimSlider(int entityID, float val)
+	{
+		GameObject tank = mGameObjects[entityID];
+		tank.GetComponent<TankShooting>().SetAimSlider(val);
+	}
+
+	public void PlayFireAudio(int entityID)
+	{
+		GameObject tank = mGameObjects[entityID];
+		tank.GetComponent<TankShooting>().PlayFireClip();
 	}
 }

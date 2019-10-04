@@ -9,20 +9,30 @@ public class TankHealth : MonoBehaviour
 	public Image mFillImage;
 	public Color mFullHealthColor = Color.green;
 	public Color mZeroHealthColor = Color.red;
-	public GameObject mExplosionPrefab;
+	public ParticleSystem mExplosionParticles;
+	public AudioSource mExplosionAudio;
 
-	private AudioSource mExplosionAudio;
-	private ParticleSystem mExplosionParticles;
+	Camera mCamera;
 
 	void Start()
     {
-		mExplosionParticles = Instantiate(mExplosionPrefab).GetComponent<ParticleSystem>();
-		mExplosionAudio = mExplosionParticles.GetComponent<AudioSource>();
-		mExplosionParticles.gameObject.SetActive(false);
+		mCamera = GetComponentInChildren<Camera>();
 	}
 
-    void Update()
-    {
-        
-    }
+	public void SetTankHealth(float health)
+	{
+		mSlider.value = health;
+		mFillImage.color = Color.Lerp(mZeroHealthColor, mFullHealthColor, health);
+	}
+
+	public void Destroy()
+	{
+		if(mCamera)
+			mCamera.transform.parent = null;
+
+		mExplosionParticles.transform.parent = null;
+		mExplosionParticles.Play();
+		mExplosionAudio.Play();
+		Destroy(mExplosionParticles.gameObject, mExplosionParticles.main.duration);
+	}
 }

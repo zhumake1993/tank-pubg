@@ -41,7 +41,7 @@ public class MsgManager : MonoBehaviour
 		float v = reader.ReadFloat();
 		float h = reader.ReadFloat();
 		float a = reader.ReadFloat();
-		bool j = reader.ReadInt32() != 0;
+		int j = reader.ReadInt32();
 
 		mGame.PlayerControl(clientID, v, h, a, j);
 	}

@@ -10,8 +10,8 @@ public class Game : MonoBehaviour
 
 	NetManager mNetManager;
 
-	Dictionary<int, GameObject> mGameObjects = new Dictionary<int, GameObject>();
-	Dictionary<int, GameObject> mPlayerGameObjects = new Dictionary<int, GameObject>();
+	[HideInInspector] public Dictionary<int, GameObject> mGameObjects = new Dictionary<int, GameObject>();
+	[HideInInspector] public Dictionary<int, GameObject> mPlayerGameObjects = new Dictionary<int, GameObject>();
 
 	int mCurrAvailableEntityId = 0;
 
@@ -29,6 +29,7 @@ public class Game : MonoBehaviour
 	{
 		int clientID = Global.GetNewClientID();
 		Global.mClients[client] = clientID;
+		Global.mClientsR[clientID] = client;
 
 		NetStream writer = new NetStream();
 		writer.WriteInt32(Global.mCmd["SC_CONTROL_CONNECT_SUCCESS"]);
@@ -51,18 +52,22 @@ public class Game : MonoBehaviour
 			attribute.SetClientID(i+1);
 			attribute.SetName("Tank");
 
-			mGameObjects[GetAvailableEntityID()] = tank;
+			mGameObjects[attribute.GetEntityID()] = tank;
 			mPlayerGameObjects[i+1] = tank;
 		}
 	}
 
-	int GetAvailableEntityID()
+	public int GetAvailableEntityID()
 	{
 		return mCurrAvailableEntityId++;
 	}
 
-	public void PlayerControl(int clientID, float v, float h, float a, bool j)
+	public void PlayerControl(int clientID, float v, float h, float a, int j)
 	{
-		mPlayerGameObjects[clientID].GetComponent<Test>().Move(v, h);
+		if (mPlayerGameObjects.ContainsKey(clientID))
+		{
+			mPlayerGameObjects[clientID].GetComponent<TankMovement>().SetMovementInput(v, h);
+			mPlayerGameObjects[clientID].GetComponent<TankShooting>().SetFireInput(j);
+		}
 	}
 }

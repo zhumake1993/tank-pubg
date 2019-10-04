@@ -68,9 +68,12 @@
     <Compile Include="Assets\Scripts\NetManager.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetStream.cs" />
     <Compile Include="Assets\Scripts\NetWork\Server.cs" />
+    <Compile Include="Assets\Scripts\ShellExplosion.cs" />
     <Compile Include="Assets\Scripts\Synchronization\Attribute.cs" />
     <Compile Include="Assets\Scripts\Synchronization\Syn.cs" />
-    <Compile Include="Assets\Scripts\Test.cs" />
+    <Compile Include="Assets\Scripts\TankHealth.cs" />
+    <Compile Include="Assets\Scripts\TankMovement.cs" />
+    <Compile Include="Assets\Scripts\TankShooting.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Tank PUBG/Tank PUBG Physics/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

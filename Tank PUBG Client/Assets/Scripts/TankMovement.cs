@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+	public AudioSource mMovementAudio;
+	public AudioClip mEngineIdling;
+	public AudioClip mEngineDriving;
 
-    void Update()
-    {
-        
-    }
+	public void PlayEngineAudio(bool engineDriving)
+	{
+		if (engineDriving)
+		{
+			mMovementAudio.clip = mEngineDriving;
+			mMovementAudio.Play();
+		}
+		else
+		{
+			mMovementAudio.clip = mEngineIdling;
+			mMovementAudio.Play();
+		}
+	}
 }
